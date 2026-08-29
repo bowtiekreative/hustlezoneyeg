@@ -3,15 +3,15 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Privacy Policy — Hustle Zone YEG" description="Hustle Zone YEG privacy policy. How we collect, use, and protect your data.">
-  <article class="policy-article">
-    <div class="container policy-container">
-      <div class="policy-header rp-reveal">
-        <span class="section-label">LEGAL</span>
+  <article class="lka-legal">
+    <div class="container lka-legal-container">
+      <div class="lka-legal-head lka-reveal">
+        <span class="lka-label">Legal</span>
         <h1>Privacy Policy</h1>
-        <p class="policy-date">Last updated: August 29, 2026</p>
+        <p class="lka-legal-date">Last updated: August 29, 2026</p>
       </div>
 
-      <div class="policy-body rp-reveal">
+      <div class="lka-legal-body lka-reveal">
         <h2>1. Introduction</h2>
         <p>Hustle Zone YEG ("we", "our", "us") respects your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform and website at hustlezoneyeg.com.</p>
 
@@ -55,8 +55,8 @@ import Layout from '../layouts/Layout.astro';
 
         <h2>8. Contact Us</h2>
         <p>For privacy-related inquiries, contact us at:</p>
-        <p><strong>Email:</strong> privacy@hustlezoneyeg.com<br/>
-        Hustle Zone YEG<br/>
+        <p><strong>Email:</strong> privacy@hustlezoneyeg.com<br>
+        Hustle Zone YEG<br>
         Calgary, Alberta, Canada</p>
 
         <h2>9. Changes to This Policy</h2>
@@ -67,34 +67,35 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style is:global>
-  .policy-article { padding: var(--space-8) 0 var(--space-10); }
-  .policy-container { max-width: 720px; }
-  .policy-header { margin-bottom: var(--space-8); }
-  .policy-header h1 {
-    font-size: var(--text-h1); font-weight: var(--weight-semibold);
-    letter-spacing: var(--track-h1); line-height: var(--leading-h1);
+  .lka-legal { padding: var(--space-9) 0 var(--space-10); }
+  .lka-legal-container { max-width: 720px; }
+  .lka-legal-head { margin-bottom: var(--space-8); }
+  .lka-legal-head h1 {
+    font-size: var(--text-display); font-weight: var(--weight-semibold);
+    letter-spacing: var(--track-display); line-height: var(--leading-display);
     color: var(--text-heading); margin: var(--space-4) 0 var(--space-3);
   }
-  .policy-date { font-size: var(--text-small); color: var(--text-muted); }
-  .policy-body h2 {
+  .lka-legal-date { font-size: var(--text-small); color: var(--text-muted); }
+  .lka-legal-body h2 {
     font-size: var(--text-h3); font-weight: var(--weight-semibold);
     color: var(--text-heading); margin-top: var(--space-7);
     margin-bottom: var(--space-4);
   }
-  .policy-body h3 {
+  .lka-legal-body h3 {
     font-size: var(--text-h4); font-weight: var(--weight-semibold);
     color: var(--text-heading); margin-top: var(--space-5);
     margin-bottom: var(--space-3);
   }
-  .policy-body p {
-    font-size: var(--size-body); color: var(--text-body);
+  .lka-legal-body p {
+    font-size: var(--text-body); color: var(--text-body);
     line-height: var(--leading-body); margin-bottom: var(--space-4);
   }
-  .policy-body ul {
+  .lka-legal-body ul {
     padding-left: var(--space-5); margin-bottom: var(--space-4);
   }
-  .policy-body li {
-    font-size: var(--size-body); color: var(--text-body);
+  .lka-legal-body li {
+    font-size: var(--text-body); color: var(--text-body);
     line-height: var(--leading-body); margin-bottom: var(--space-2);
   }
+  .lka-legal-body strong { color: var(--text-heading); }
 </style>

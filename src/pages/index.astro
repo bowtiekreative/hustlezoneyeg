@@ -1,29 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Button from '../components/Button.astro';
 ---
 
 <Layout title="Hustle Zone YEG — run the whole hustle from one place">
   <!-- ── Hero ── -->
-  <section class="section hero-section">
-    <div class="container hero-grid">
-      <div class="hero-text rp-reveal">
-        <span class="hero-eyebrow">BUSINESS OPERATING SYSTEM</span>
-        <h1 class="hero-title">Your <span class="accent">whole hustle</span>.<br/>One dashboard.</h1>
-        <p class="hero-desc">Clients, projects, money, products, socials and email in a single dashboard. Built for people building something on the side — or on their own.</p>
-        <div class="hero-actions">
-          <Button href="/demo" variant="primary" size="lg">Book a Demo</Button>
-          <Button href="/#features" variant="secondary" size="lg">See Features</Button>
+  <section class="section lka-hero">
+    <div class="container lka-hero-grid">
+      <div class="lka-hero-text lka-reveal">
+        <span class="lka-label">Business operating system</span>
+        <h1 class="lka-hero-title">Your <span class="lka-acc">whole hustle</span>.<br>One dashboard.</h1>
+        <p class="lka-hero-desc">Clients, projects, money, products, socials and email in a single dashboard. Built for people building something on the side — or on their own.</p>
+        <div class="lka-hero-actions">
+          <a href="/demo" class="lka-btn lka-btn-accent lka-btn-lg">Book a Demo</a>
+          <a href="/#features" class="lka-btn lka-btn-outline lka-btn-lg">See Features</a>
         </div>
       </div>
-      <div class="hero-media rp-reveal">
-        <div class="hero-frame">
-          <div class="hero-notch"></div>
-          <div class="hero-dashboard">
-            <div class="db-row"><span class="db-label">Revenue</span><span class="db-value accent">$12,430</span></div>
-            <div class="db-row"><span class="db-label">Active Clients</span><span class="db-value">8</span></div>
-            <div class="db-row"><span class="db-label">Open Tasks</span><span class="db-value">24</span></div>
-            <div class="db-row"><span class="db-label">Messages</span><span class="db-value">7</span></div>
+      <div class="lka-hero-media lka-reveal">
+        <div class="lka-frame">
+          <div class="lka-notch"></div>
+          <div class="lka-dash">
+            <div class="lka-dash-row"><span class="lka-dash-lbl">Revenue</span><span class="lka-dash-val lka-acc">$12,430</span></div>
+            <div class="lka-dash-row"><span class="lka-dash-lbl">Active Clients</span><span class="lka-dash-val">8</span></div>
+            <div class="lka-dash-row"><span class="lka-dash-lbl">Open Tasks</span><span class="lka-dash-val">24</span></div>
+            <div class="lka-dash-row"><span class="lka-dash-lbl">Messages</span><span class="lka-dash-val">7</span></div>
           </div>
         </div>
       </div>
@@ -31,38 +30,38 @@ import Button from '../components/Button.astro';
   </section>
 
   <!-- ── Features ── -->
-  <section id="features" class="section features-section">
+  <section id="features" class="section lka-features">
     <div class="container">
-      <div class="section-label rp-reveal">FEATURES</div>
-      <h2 class="section-title rp-reveal">Everything you need to<br/><span class="accent">run your hustle</span>.</h2>
-      <div class="features-grid rp-reveal-stagger in-view">
-        <div class="feature-card">
-          <div class="fc-icon">📋</div>
+      <span class="lka-label lka-reveal">Features</span>
+      <h2 class="lka-sec-title lka-reveal">Everything you need to<br><span class="lka-acc">run your hustle</span>.</h2>
+      <div class="lka-feat-grid lka-reveal-stagger in-view">
+        <div class="lka-card">
+          <div class="lka-card-icon">📋</div>
           <h3>Project Management</h3>
           <p>Track every client project from brief to delivery. Kanban boards, timelines, file sharing.</p>
         </div>
-        <div class="feature-card">
-          <div class="fc-icon">💰</div>
+        <div class="lka-card">
+          <div class="lka-card-icon">💰</div>
           <h3>Invoicing & Payments</h3>
           <p>Send invoices, accept payments, track what's owed. No more spreadsheets.</p>
         </div>
-        <div class="feature-card">
-          <div class="fc-icon">📧</div>
+        <div class="lka-card">
+          <div class="lka-card-icon">📧</div>
           <h3>Email Integration</h3>
           <p>Connect your inbox. Send, receive, and track emails without leaving the dashboard.</p>
         </div>
-        <div class="feature-card">
-          <div class="fc-icon">📱</div>
+        <div class="lka-card">
+          <div class="lka-card-icon">📱</div>
           <h3>Social Media</h3>
           <p>Schedule posts, track engagement, manage all your accounts from one place.</p>
         </div>
-        <div class="feature-card">
-          <div class="fc-icon">📊</div>
+        <div class="lka-card">
+          <div class="lka-card-icon">📊</div>
           <h3>Analytics</h3>
           <p>See what's working. Revenue trends, client activity, and growth metrics at a glance.</p>
         </div>
-        <div class="feature-card">
-          <div class="fc-icon">🔗</div>
+        <div class="lka-card">
+          <div class="lka-card-icon">🔗</div>
           <h3>Client Portal</h3>
           <p>Give clients a white-label portal to see progress, approve work, and communicate.</p>
         </div>
@@ -71,25 +70,25 @@ import Button from '../components/Button.astro';
   </section>
 
   <!-- ── How It Works ── -->
-  <section id="how" class="section how-section">
+  <section id="how" class="section lka-how">
     <div class="container">
-      <div class="section-label rp-reveal">HOW IT WORKS</div>
-      <h2 class="section-title rp-reveal">Set up in minutes.<br/><span class="accent">Start in hours</span>.</h2>
-      <div class="steps-grid rp-reveal-stagger in-view">
-        <div class="step-card">
-          <span class="step-num">01</span>
+      <span class="lka-label lka-reveal">How it works</span>
+      <h2 class="lka-sec-title lka-reveal">Set up in minutes.<br><span class="lka-acc">Start in hours</span>.</h2>
+      <div class="lka-steps lka-reveal-stagger in-view">
+        <div class="lka-step">
+          <span class="lka-step-num">01</span>
           <h3>Book a Demo</h3>
           <p>See the platform in action. We'll walk through your specific use case.</p>
         </div>
-        <div class="step-arrow">→</div>
-        <div class="step-card">
-          <span class="step-num">02</span>
+        <div class="lka-step-arr">→</div>
+        <div class="lka-step">
+          <span class="lka-step-num">02</span>
           <h3>Get Onboarded</h3>
           <p>We set up your workspace, connect your tools, and import your data.</p>
         </div>
-        <div class="step-arrow">→</div>
-        <div class="step-card">
-          <span class="step-num">03</span>
+        <div class="lka-step-arr">→</div>
+        <div class="lka-step">
+          <span class="lka-step-num">03</span>
           <h3>Run Your Hustle</h3>
           <p>Manage everything from one dashboard. Clients, projects, money — all in sync.</p>
         </div>
@@ -98,28 +97,28 @@ import Button from '../components/Button.astro';
   </section>
 
   <!-- ── Pricing ── -->
-  <section id="pricing" class="section pricing-section">
+  <section id="pricing" class="section lka-pricing">
     <div class="container">
-      <div class="section-label rp-reveal">PLANS</div>
-      <h2 class="section-title rp-reveal">Simple pricing.<br/><span class="accent">No surprises</span>.</h2>
-      <div class="pricing-grid rp-reveal-stagger in-view">
-        <div class="pricing-card">
+      <span class="lka-label lka-reveal">Plans</span>
+      <h2 class="lka-sec-title lka-reveal">Simple pricing.<br><span class="lka-acc">No surprises</span>.</h2>
+      <div class="lka-price-grid lka-reveal-stagger in-view">
+        <div class="lka-price-card">
           <h3>Starter</h3>
-          <div class="price"><span class="amount">$29</span><span class="period">/mo</span></div>
-          <ul class="price-features">
+          <div class="lka-price-amt"><span class="lka-price-num">$29</span><span class="lka-price-per">/mo</span></div>
+          <ul class="lka-price-feats">
             <li>Up to 3 clients</li>
             <li>5 projects</li>
             <li>Basic invoicing</li>
             <li>Email integration</li>
             <li>Community support</li>
           </ul>
-          <Button href="/demo" variant="secondary">Get Started</Button>
+          <a href="/demo" class="lka-btn lka-btn-outline lka-btn-md">Get Started</a>
         </div>
-        <div class="pricing-card featured">
-          <div class="popular-badge">POPULAR</div>
+        <div class="lka-price-card lka-price-feat">
+          <span class="lka-price-badge">Popular</span>
           <h3>Professional</h3>
-          <div class="price"><span class="amount">$79</span><span class="period">/mo</span></div>
-          <ul class="price-features">
+          <div class="lka-price-amt"><span class="lka-price-num">$79</span><span class="lka-price-per">/mo</span></div>
+          <ul class="lka-price-feats">
             <li>Unlimited clients</li>
             <li>Unlimited projects</li>
             <li>Advanced invoicing</li>
@@ -127,12 +126,12 @@ import Button from '../components/Button.astro';
             <li>Client portal</li>
             <li>Priority support</li>
           </ul>
-          <Button href="/demo" variant="primary">Get Started</Button>
+          <a href="/demo" class="lka-btn lka-btn-accent lka-btn-md">Get Started</a>
         </div>
-        <div class="pricing-card">
+        <div class="lka-price-card">
           <h3>Enterprise</h3>
-          <div class="price"><span class="amount">$199</span><span class="period">/mo</span></div>
-          <ul class="price-features">
+          <div class="lka-price-amt"><span class="lka-price-num">$199</span><span class="lka-price-per">/mo</span></div>
+          <ul class="lka-price-feats">
             <li>Everything in Professional</li>
             <li>Custom branding</li>
             <li>API access</li>
@@ -140,46 +139,46 @@ import Button from '../components/Button.astro';
             <li>Custom integrations</li>
             <li>SLA guarantee</li>
           </ul>
-          <Button href="/demo" variant="secondary">Contact Us</Button>
+          <a href="/demo" class="lka-btn lka-btn-outline lka-btn-md">Contact Us</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── CTA Band (the blue cut) ── -->
-  <section class="cta-band">
-    <div class="cta-inner">
-      <h2 class="cta-title rp-reveal">Ready to run your hustle?</h2>
-      <p class="cta-desc rp-reveal">Stop juggling apps. Start growing your business from one dashboard.</p>
-      <div class="cta-actions rp-reveal">
-        <a href="/demo" class="cta-btn-light">Book a Demo →</a>
+  <!-- ── CTA Band ── -->
+  <section class="lka-cta-band">
+    <div class="container lka-cta-inner">
+      <h2 class="lka-cta-title lka-reveal">Ready to run your hustle?</h2>
+      <p class="lka-cta-desc lka-reveal">Stop juggling apps. Start growing your business from one dashboard.</p>
+      <div class="lka-cta-acts lka-reveal">
+        <a href="/demo" class="lka-cta-light">Book a Demo →</a>
       </div>
     </div>
   </section>
 
   <!-- ── FAQ ── -->
-  <section id="faq" class="section faq-section">
+  <section id="faq" class="section lka-faq">
     <div class="container">
-      <div class="section-label rp-reveal">FAQ</div>
-      <h2 class="section-title rp-reveal">Common questions.</h2>
-      <div class="faq-list rp-reveal-stagger in-view">
-        <details class="faq-item">
+      <span class="lka-label lka-reveal">FAQ</span>
+      <h2 class="lka-sec-title lka-reveal">Common questions.</h2>
+      <div class="lka-faq-list lka-reveal-stagger in-view">
+        <details class="lka-faq-item">
           <summary>What is Hustle Zone?</summary>
           <p>Hustle Zone is an all-in-one business operating system for freelancers, solopreneurs, and small teams. It combines project management, invoicing, email, social media, and client portals into one dashboard.</p>
         </details>
-        <details class="faq-item">
+        <details class="lka-faq-item">
           <summary>Can I import my existing data?</summary>
           <p>Yes. During onboarding, we'll help you import contacts, projects, and invoices from your current tools. Most migrations take less than a day.</p>
         </details>
-        <details class="faq-item">
+        <details class="lka-faq-item">
           <summary>Is there a free trial?</summary>
           <p>We offer a 14-day free trial on all plans. No credit card required. Book a demo and we'll set it up for you.</p>
         </details>
-        <details class="faq-item">
+        <details class="lka-faq-item">
           <summary>What kind of support do you offer?</summary>
           <p>Starter plans include community support. Professional plans include priority email support. Enterprise plans include a dedicated account manager and SLA.</p>
         </details>
-        <details class="faq-item">
+        <details class="lka-faq-item">
           <summary>Can I cancel anytime?</summary>
           <p>Absolutely. No contracts, no lock-in. Cancel from your dashboard and you'll retain access until the end of your billing period.</p>
         </details>
@@ -189,184 +188,260 @@ import Button from '../components/Button.astro';
 </Layout>
 
 <style is:global>
+  /* ═══════════════════════════════════════════
+     Hustle Zone — LAKA Design System Reskin
+     ═══════════════════════════════════════════ */
+
+  /* ── Shared ── */
+  .lka-label {
+    display: inline-block;
+    font-size: var(--text-micro);
+    font-weight: var(--weight-regular);
+    letter-spacing: var(--track-micro);
+    text-transform: uppercase;
+    color: var(--text-body);  /* body color, NOT accent — accent fails AA at 12px (4.38:1) */
+    margin-bottom: var(--space-3);
+    border: 1px solid var(--lka-hairline-soft);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-pill);
+  }
+  .lka-acc { color: var(--lka-accent); }
+  .lka-sec-title {
+    font-size: var(--text-h2);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--track-h2);
+    line-height: var(--leading-h2);
+    color: var(--text-heading);
+    margin-bottom: var(--space-9);
+  }
+
   /* ── Hero ── */
-  .hero-section { padding-top: var(--space-8); }
-  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); align-items: center; }
-  .hero-eyebrow {
-    font-size: var(--text-micro); letter-spacing: var(--track-micro);
-    text-transform: uppercase; color: var(--rp-accent);
-    margin-bottom: var(--space-4);
+  .lka-hero { padding-top: var(--space-8); position: relative; }
+  .lka-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--backlight); pointer-events: none;
   }
-  .hero-title {
-    font-size: var(--text-h1); font-weight: var(--weight-semibold);
-    letter-spacing: var(--track-h1); line-height: var(--leading-h1);
-    color: var(--text-heading); margin-bottom: var(--space-5);
+  .lka-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); align-items: center; position: relative; }
+  .lka-hero-title {
+    font-size: var(--text-display);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--track-display);
+    line-height: var(--leading-display);
+    color: var(--text-heading);
+    margin-top: var(--space-4);
+    margin-bottom: var(--space-6);
   }
-  .accent { color: var(--rp-accent); }
-  .hero-desc {
-    font-size: var(--text-body-lg); color: var(--text-muted);
-    max-width: 480px; margin-bottom: var(--space-6);
+  .lka-hero-desc {
+    font-size: var(--text-lg);
+    color: var(--lka-muted);
+    max-width: 480px;
+    margin-bottom: var(--space-7);
   }
-  .hero-actions { display: flex; gap: var(--space-4); }
-  .hero-media { position: relative; }
-  .hero-frame {
+  .lka-hero-actions { display: flex; gap: var(--space-4); }
+
+  /* ── Hero media frame ── */
+  .lka-hero-media { position: relative; }
+  .lka-frame {
     position: relative; aspect-ratio: 4/3;
-    border-radius: var(--radius-media); overflow: hidden;
-    background: linear-gradient(135deg, var(--rp-surface-2), var(--rp-surface));
-    border: 1px solid var(--hairline-soft);
-    padding: var(--space-6);
+    border-radius: var(--radius-media);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--lka-raised), var(--lka-surface));
+    border: 1px solid var(--lka-hairline-soft);
+    padding: var(--space-7);
   }
-  .hero-notch {
+  .lka-notch {
     position: absolute; right: 0; bottom: 0;
     width: 112px; height: 80px;
     background: var(--bg-page);
-    border-top-left-radius: 16px;
+    border-top-left-radius: var(--radius-card);
     z-index: 2;
   }
-  .hero-dashboard {
+  .lka-dash {
     display: flex; flex-direction: column; gap: var(--space-4);
   }
-  .db-row {
+  .lka-dash-row {
     display: flex; justify-content: space-between; align-items: center;
     padding: var(--space-3) var(--space-4);
     background: rgba(245,247,250,0.04);
-    border-radius: var(--radius-input);
-    border: 1px solid var(--hairline-soft);
+    border-radius: var(--radius-control);
+    border: 1px solid var(--lka-hairline-soft);
   }
-  .db-label { font-size: var(--text-small); color: var(--text-muted); }
-  .db-value { font-weight: var(--weight-semibold); color: var(--text-heading); }
-
-  /* ── Section common ── */
-  .section-label {
-    font-size: var(--text-micro); letter-spacing: var(--track-micro);
-    text-transform: uppercase; color: var(--rp-accent);
-    margin-bottom: var(--space-3);
-  }
-  .section-title {
-    font-size: var(--text-h2); font-weight: var(--weight-semibold);
-    letter-spacing: var(--track-h2); line-height: var(--leading-h2);
-    color: var(--text-heading); margin-bottom: var(--space-7);
-  }
+  .lka-dash-lbl { font-size: var(--text-small); color: var(--text-muted); }
+  .lka-dash-val { font-weight: var(--weight-semibold); color: var(--text-heading); }
 
   /* ── Features ── */
-  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
-  .feature-card {
-    padding: var(--space-6); border-radius: var(--radius-card);
-    border: 1px solid var(--hairline-soft);
-    background: var(--surface-card);
-    transition: border-color var(--duration-fast) var(--ease-out);
+  .lka-features { background: var(--lka-surface); }
+  .lka-feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+  .lka-card {
+    padding: var(--space-7); border-radius: var(--radius-card);
+    border: 1px solid var(--lka-hairline-soft);
+    background: var(--bg-page);
+    transition: border-color var(--duration-fast) var(--ease-out),
+                transform var(--duration-fast) var(--ease-out);
   }
-  .feature-card:hover { border-color: rgba(245,247,250,0.25); }
-  .fc-icon { font-size: 32px; margin-bottom: var(--space-4); }
-  .feature-card h3 { font-size: var(--text-h4); font-weight: var(--weight-semibold); color: var(--text-heading); margin-bottom: var(--space-2); }
-  .feature-card p { font-size: var(--text-small); color: var(--text-muted); line-height: 1.6; }
+  .lka-card:hover { border-color: rgba(245,247,250,0.25); transform: translateY(-2px); }
+  .lka-card-icon { font-size: 32px; margin-bottom: var(--space-4); display: block; }
+  .lka-card h3 { font-size: var(--text-h4); font-weight: var(--weight-semibold); color: var(--text-heading); margin-bottom: var(--space-2); }
+  .lka-card p { font-size: var(--text-small); color: var(--text-muted); line-height: 1.6; }
 
   /* ── How It Works ── */
-  .steps-grid {
+  .lka-how {
+    background:
+      var(--backlight-top),
+      var(--bg-page);
+  }
+  .lka-steps {
     display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
     align-items: center; gap: var(--space-5);
   }
-  .step-card { text-align: center; padding: var(--space-6); }
-  .step-num {
-    display: inline-block; font-size: var(--text-micro);
-    letter-spacing: var(--track-micro); text-transform: uppercase;
-    color: var(--rp-accent); margin-bottom: var(--space-3);
+  .lka-step { text-align: center; padding: var(--space-7); }
+  .lka-step-num {
+    display: inline-block;
+    font-size: var(--text-micro);
+    letter-spacing: var(--track-micro);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    color: var(--lka-accent);
+    margin-bottom: var(--space-3);
     padding: var(--space-1) var(--space-3);
     border: 1px solid rgba(63,110,233,0.3);
     border-radius: var(--radius-pill);
   }
-  .step-card h3 { font-size: var(--text-h4); font-weight: var(--weight-semibold); color: var(--text-heading); margin-bottom: var(--space-2); }
-  .step-card p { font-size: var(--text-small); color: var(--text-muted); }
-  .step-arrow { font-size: 24px; color: var(--rp-accent); text-align: center; }
+  .lka-step h3 { font-size: var(--text-h4); font-weight: var(--weight-semibold); color: var(--text-heading); margin-bottom: var(--space-2); }
+  .lka-step p { font-size: var(--text-small); color: var(--text-muted); max-width: 300px; margin: 0 auto; }
+  .lka-step-arr { font-size: 24px; color: var(--lka-accent); text-align: center; }
 
   /* ── Pricing ── */
-  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
-  .pricing-card {
-    padding: var(--space-7) var(--space-6);
+  .lka-pricing {
+    background: linear-gradient(180deg, var(--lka-surface), var(--bg-page));
+  }
+  .lka-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); align-items: start; }
+  .lka-price-card {
+    padding: var(--space-8) var(--space-7);
     border-radius: var(--radius-card);
-    border: 1px solid var(--hairline-soft);
-    background: var(--surface-card);
+    border: 1px solid var(--lka-hairline-soft);
+    background: var(--lka-surface);
     display: flex; flex-direction: column;
+    transition: border-color var(--duration-fast) var(--ease-out);
   }
-  .pricing-card.featured {
-    border-color: var(--rp-accent);
+  .lka-price-card:hover { border-color: rgba(245,247,250,0.25); }
+  .lka-price-feat {
+    border-color: var(--lka-accent);
     position: relative;
-    transform: scale(1.05);
+    background: linear-gradient(135deg, var(--bg-page), var(--lka-surface));
+    transform: scale(1.04);
+    z-index: 2;
   }
-  .popular-badge {
-    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-    padding: 4px 16px; border-radius: var(--radius-pill);
-    background: var(--rp-accent); color: var(--rp-on-accent);
-    font-size: var(--text-micro); font-weight: var(--weight-semibold);
-    letter-spacing: var(--track-micro); text-transform: uppercase;
+  .lka-price-badge {
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+    padding: 4px 20px; border-radius: var(--radius-pill);
+    background: var(--lka-accent); color: #FFFFFF;
+    font-size: var(--text-micro); font-weight: var(--weight-bold);
+    letter-spacing: 0.04em; text-transform: uppercase;
   }
-  .pricing-card h3 { font-size: var(--text-h4); color: var(--text-heading); margin-bottom: var(--space-4); }
-  .price { margin-bottom: var(--space-6); }
-  .amount { font-size: var(--text-h2); font-weight: var(--weight-semibold); color: var(--text-heading); }
-  .period { font-size: var(--text-body); color: var(--text-muted); margin-left: var(--space-1); }
-  .price-features { list-style: none; margin-bottom: var(--space-6); flex: 1; }
-  .price-features li {
+  .lka-price-card h3 { font-size: var(--text-h4); color: var(--text-heading); margin-bottom: var(--space-4); }
+  .lka-price-amt { margin-bottom: var(--space-6); }
+  .lka-price-num { font-size: var(--text-h2); font-weight: var(--weight-bold); color: var(--text-heading); line-height: 1; }
+  .lka-price-per { font-size: var(--text-body); color: var(--text-muted); margin-left: var(--space-1); }
+  .lka-price-feats { list-style: none; margin-bottom: var(--space-7); flex: 1; }
+  .lka-price-feats li {
     padding: var(--space-2) 0; font-size: var(--text-small);
-    color: var(--text-body); border-bottom: 1px solid var(--hairline-soft);
+    color: var(--text-body);
+    border-bottom: 1px solid var(--lka-hairline-soft);
   }
-  .price-features li::before { content: "✓ "; color: var(--rp-accent); }
+  .lka-price-feats li::before { content: "✓ "; color: var(--lka-accent); font-weight: var(--weight-bold); }
 
   /* ── CTA Band ── */
-  .cta-band {
-    background: var(--cta); text-align: center;
+  .lka-cta-band {
+    position: relative;
+    background: linear-gradient(135deg, var(--lka-accent), #5588FF 50%, var(--lka-accent));
+    text-align: center;
     padding: var(--space-10) 0;
+    overflow: hidden;
   }
-  .cta-inner { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
-  .cta-title {
-    font-size: var(--text-h2); font-weight: var(--weight-semibold);
-    letter-spacing: var(--track-h2); line-height: var(--leading-h2);
-    color: var(--rp-on-accent); margin-bottom: var(--space-5);
+  .lka-cta-band::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: var(--grain-url);
+    opacity: var(--grain-opacity);
+    pointer-events: none;
   }
-  .cta-desc {
-    font-size: var(--text-body-lg); color: rgba(245,247,250,0.8);
-    max-width: 480px; margin: 0 auto var(--space-7);
+  .lka-cta-inner {
+    max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter);
+    position: relative;
   }
-  .cta-btn-light {
-    display: inline-block; padding: 16px 32px;
-    border-radius: var(--radius-btn);
-    background: var(--rp-heading); color: var(--rp-canvas);
-    font-weight: var(--weight-semibold); font-size: 16px;
+  .lka-cta-title {
+    font-size: var(--text-h2);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--track-h2);
+    line-height: var(--leading-h2);
+    color: #FFFFFF;  /* LAKA: white on accent */
+    margin-bottom: var(--space-5);
+  }
+  .lka-cta-desc {
+    font-size: var(--text-lg);
+    color: rgba(255,255,255,0.85);
+    max-width: 480px;
+    margin: 0 auto var(--space-8);
+  }
+  .lka-cta-light {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 16px 36px;
+    border-radius: var(--radius-pill);
+    background: #FFFFFF; color: var(--lka-accent);
+    font-weight: var(--weight-bold); font-size: 16px;
     text-decoration: none;
-    transition: opacity var(--duration-fast) var(--ease-out);
+    transition: transform var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out);
   }
-  .cta-btn-light:hover { opacity: 0.9; }
+  .lka-cta-light:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(255,255,255,0.25);
+  }
 
   /* ── FAQ ── */
-  .faq-list { max-width: 720px; }
-  .faq-item {
-    border-bottom: 1px solid var(--hairline-soft);
+  .lka-faq-list { max-width: 720px; }
+  .lka-faq-item {
+    border-bottom: 1px solid var(--lka-hairline-soft);
     padding: var(--space-5) 0;
   }
-  .faq-item summary {
-    font-size: var(--text-h4); font-weight: var(--weight-semibold);
-    color: var(--text-heading); cursor: pointer;
+  .lka-faq-item summary {
+    font-size: var(--text-h4);
+    font-weight: var(--weight-semibold);
+    color: var(--text-heading);
+    cursor: pointer;
     transition: color var(--duration-fast) var(--ease-out);
     list-style: none;
     display: flex; align-items: center; justify-content: space-between;
+    padding: var(--space-2) 0;
   }
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary::after {
-    content: "+"; font-size: 20px; color: var(--rp-accent);
+  .lka-faq-item summary::-webkit-details-marker { display: none; }
+  .lka-faq-item summary::after {
+    content: "+";
+    font-size: 22px;
+    color: var(--lka-accent);
+    font-weight: var(--weight-bold);
     transition: transform var(--duration-fast) var(--ease-out);
+    line-height: 1;
   }
-  .faq-item[open] summary::after { transform: rotate(45deg); }
-  .faq-item p {
-    margin-top: var(--space-3); font-size: var(--text-small);
-    color: var(--text-muted); line-height: 1.7;
-    max-width: 600px;
+  .lka-faq-item[open] summary::after { transform: rotate(45deg); }
+  .lka-faq-item p {
+    margin-top: var(--space-4);
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 620px;
+    padding-bottom: var(--space-2);
   }
+  .lka-faq-item[open] { padding-bottom: var(--space-4); }
 
+  /* ── Mobile ── */
   @media (max-width: 768px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .features-grid { grid-template-columns: 1fr; }
-    .steps-grid { grid-template-columns: 1fr; }
-    .steps-grid .step-arrow { display: none; }
-    .pricing-grid { grid-template-columns: 1fr; }
-    .pricing-card.featured { transform: none; }
+    .lka-hero-grid { grid-template-columns: 1fr; }
+    .lka-feat-grid { grid-template-columns: 1fr; }
+    .lka-steps { grid-template-columns: 1fr; }
+    .lka-steps .lka-step-arr { display: none; }
+    .lka-price-grid { grid-template-columns: 1fr; }
+    .lka-price-feat { transform: none; }
+    .lka-hero-actions { flex-direction: column; }
   }
 </style>

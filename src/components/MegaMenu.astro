@@ -1,86 +1,241 @@
 ---
-// MegaMenu — Astro port of the RP MegaMenu
-// Frosted glass drop panel, staggered links, optional feature still
+// MegaMenu — LAKA Nav Contract
+// Exactly 4 elements: seal, uppercase site_name, Menu button (outlined pill), CTA (solid accent pill)
+// No inline nav links — destinations live in the Menu dropdown panel only
+
 export interface Props {
   brand?: string;
-  items: Array<{
-    label: string;
-    href?: string;
-    sections?: Array<{
-      title: string;
-      links: Array<{ label: string; href: string; meta?: string }>;
-    }>;
-    feature?: {
-      src?: string;
-      kicker?: string;
-      title: string;
-      href?: string;
-    };
-  }>;
+  items?: Array<{ label: string; href?: string }>;
   cta?: string;
   ctaHref?: string;
+  sealText?: string;
 }
-const { brand = 'Hustle Zone', items = [], cta, ctaHref = '/demo' } = Astro.props;
+
+const {
+  brand = 'Hustle Zone',
+  items = [],
+  cta,
+  ctaHref = '/demo',
+  sealText = 'H',
+} = Astro.props;
+
+// Split brand into first word + second word for LAKA uppercase spec
+const words = brand.split(/\s+/);
+const firstWord = words[0]?.toUpperCase() || '';
+const secondWord = words.length > 1 ? words.slice(1).join(' ').toUpperCase() : '';
 ---
 
-<div class="mega-menu" data-astro-cid-mm>
-  <header class="mm-bar" data-astro-cid-mm>
-    <div class="mm-inner" data-astro-cid-mm>
-      <a href="/" class="mm-brand" data-astro-cid-mm>
-        <span class="mm-mark" data-astro-cid-mm>H</span>
-        <span class="mm-name" data-astro-cid-mm>Hustle<span class="mm-accent">Zone</span></span>
-      </a>
-      <nav class="mm-nav" data-astro-cid-mm id="mm-nav">
-        {items.map((it) => (
-          <a href={it.href || '#'} class="mm-link" data-astro-cid-mm>{it.label}</a>
-        ))}
-      </nav>
-      {cta && (
-        <a href={ctaHref} class="mm-cta" data-astro-cid-mm>{cta}</a>
-      )}
+<div class="lka-mega" data-astro-cid-mm>
+  <header class="lka-bar" data-astro-cid-mm>
+    <div class="lka-inner" data-astro-cid-mm>
+      <!-- Group left: seal + site_name (LAKA order 1, 2) -->
+      <div class="lka-left" data-astro-cid-mm>
+        <a href="/" class="lka-seal" data-astro-cid-mm aria-label="Home">
+          <span class="lka-seal-mark" data-astro-cid-mm>{sealText}</span>
+        </a>
+        <a href="/" class="lka-site-name" data-astro-cid-mm>
+          <span class="lka-name-first" data-astro-cid-mm>{firstWord}</span>
+          {secondWord && <span class="lka-name-acc" data-astro-cid-mm> {secondWord}</span>}
+        </a>
+      </div>
+
+      <!-- Group right: Menu button + CTA (LAKA order 3, 4) -->
+      <div class="lka-right" data-astro-cid-mm>
+        <button class="lka-menu-btn" data-astro-cid-mm id="lka-menu-btn" aria-expanded="false" aria-controls="lka-dropdown">
+          <span class="lka-menu-label" data-astro-cid-mm>Menu</span>
+          <svg class="lka-menu-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" data-astro-cid-mm>
+            <rect x="0.5" y="0.5" width="11" height="11" rx="1.5" stroke="currentColor"/>
+            <line x1="2.5" y1="4" x2="9.5" y2="4" stroke="currentColor"/>
+            <line x1="2.5" y1="6" x2="9.5" y2="6" stroke="currentColor"/>
+            <line x1="2.5" y1="8" x2="9.5" y2="8" stroke="currentColor"/>
+          </svg>
+        </button>
+        {cta && (
+          <a href={ctaHref} class="lka-cta-btn" data-astro-cid-mm>{cta}</a>
+        )}
+      </div>
     </div>
   </header>
+
+  <!-- Dropdown panel — contains all nav links (no inline links in the bar per LAKA) -->
+  <div class="lka-dropdown" data-astro-cid-mm id="lka-dropdown" hidden>
+    <div class="lka-dropdown-inner" data-astro-cid-mm>
+      <nav class="lka-dropdown-nav" data-astro-cid-mm>
+        {items.map((it) => (
+          <a href={it.href || '#'} class="lka-drop-link" data-astro-cid-mm>
+            {it.label}
+            <svg class="lka-drop-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" data-astro-cid-mm>
+              <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        ))}
+      </nav>
+    </div>
+  </div>
 </div>
 
+<script>
+  const btn = document.getElementById('lka-menu-btn');
+  const panel = document.getElementById('lka-dropdown');
+  if (btn && panel) {
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.hidden = open;
+    });
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      const parent = btn.closest('.lka-mega');
+      if (!parent?.contains(e.target) && !panel.hidden) {
+        btn.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+      }
+    });
+    // Close on Escape
+    panel.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        btn.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+        btn.focus();
+      }
+    });
+  }
+</script>
+
 <style is:global>
-  .mega-menu { position: relative; font-family: var(--font-core); }
-  .mm-bar {
+  /* ── Bar ── */
+  .lka-mega { position: relative; font-family: var(--font-core); }
+  .lka-bar {
     position: relative; z-index: 100;
     background: var(--glass-bg);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    border-bottom: 1px solid var(--hairline-soft);
+    border-bottom: 1px solid var(--lka-hairline-soft);
+    height: 78px; /* LAKA: bar_height_px */
   }
-  .mm-inner {
+  .lka-bar.condensed { height: 64px; }
+  .lka-inner {
     max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter);
-    height: 72px; display: flex; align-items: center; justify-content: space-between;
+    height: 100%; display: flex; align-items: center;
+    justify-content: space-between;
   }
-  .mm-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
-  .mm-mark {
-    display: grid; place-items: center; width: 32px; height: 32px;
-    border-radius: var(--radius-btn); background: var(--rp-accent);
-    color: var(--rp-on-accent); font-size: 15px; font-weight: var(--weight-semibold);
+
+  /* ── Group left: seal + site_name ── */
+  .lka-left {
+    display: flex; align-items: center;
+    gap: 13px; /* LAKA: gap_left */
+  }
+  .lka-seal { text-decoration: none; display: block; }
+  .lka-seal-mark {
+    display: grid; place-items: center;
+    width: 34px; height: 34px; /* LAKA: 34px standing */
+    border-radius: var(--radius-control);
+    background: var(--lka-accent);
+    color: #FFFFFF; /* LAKA: reversed on dark */
+    font-size: 15px; font-weight: var(--weight-bold); line-height: 1;
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+  .lka-seal:hover .lka-seal-mark { transform: scale(1.06); }
+  .lka-site-name {
+    text-decoration: none; display: flex;
+    font-size: 20px; font-weight: var(--weight-bold);
+    letter-spacing: 0.02em; /* LAKA: +0.02em */
     line-height: 1;
   }
-  .mm-name { font-weight: var(--weight-semibold); letter-spacing: -0.03em; font-size: 17px; color: var(--text-heading); }
-  .mm-accent { color: var(--rp-accent); }
-  .mm-nav { display: flex; gap: 32px; align-items: center; }
-  .mm-link {
-    font-size: var(--text-micro); letter-spacing: var(--track-micro); text-transform: uppercase;
-    color: var(--text-body); text-decoration: none; padding: 26px 0;
-    transition: color var(--duration-fast) var(--ease-out);
+  /* First word in heading colour, second in accent (LAKA spec) */
+  .lka-name-first { color: var(--text-heading); }
+  .lka-name-acc { color: var(--lka-accent); }
+
+  /* ── Group right: Menu button + CTA ── */
+  .lka-right {
+    display: flex; align-items: center;
+    gap: 16px; /* LAKA: gap_right */
   }
-  .mm-link:hover { color: var(--text-heading); }
-  .mm-cta {
-    padding: 10px 20px; border-radius: var(--radius-btn);
-    background: var(--cta); color: var(--rp-on-accent);
-    font-size: var(--text-small); font-weight: var(--weight-semibold);
-    border: none; cursor: pointer; text-decoration: none;
+
+  /* Rule: Menu button — outlined pill carrying the word MENU (LAKA nav contract order 3) */
+  .lka-menu-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px; min-height: 40px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--lka-hairline);
+    background: transparent;
+    color: var(--text-heading);
+    font-family: var(--font-core);
+    font-size: var(--text-small);
+    font-weight: var(--weight-semibold);
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: border-color var(--duration-fast) var(--ease-out),
+                background var(--duration-fast) var(--ease-out);
+  }
+  .lka-menu-btn:hover { border-color: var(--lka-heading); background: rgba(245,247,250,0.06); }
+  .lka-menu-btn[aria-expanded="true"] {
+    border-color: var(--lka-accent);
+    background: rgba(63,110,233,0.08);
+  }
+  .lka-menu-icon { display: block; flex-shrink: 0; }
+  /* Flip icon to close mark when open */
+  .lka-menu-btn[aria-expanded="true"] .lka-menu-icon rect { stroke: var(--lka-accent); }
+  .lka-menu-btn[aria-expanded="true"] .lka-menu-icon line:nth-child(2) { display: none; }
+  .lka-menu-btn[aria-expanded="true"] .lka-menu-icon line:nth-child(3) { transform-origin: center; transform: rotate(45deg) translate(1px, -1px); }
+  .lka-menu-btn[aria-expanded="true"] .lka-menu-icon line:nth-child(4) { display: none; }
+
+  /* CTA: solid accent pill, always last (LAKA nav contract order 4) */
+  .lka-cta-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 10px 24px; min-height: 44px;
+    border-radius: var(--radius-pill);
+    background: var(--lka-accent);
+    border: 1px solid var(--lka-accent);
+    color: #FFFFFF; /* LAKA: white on accent at 4.55:1 */
+    font-family: var(--font-core);
+    font-size: var(--text-small);
+    font-weight: var(--weight-semibold);
+    letter-spacing: -0.01em;
+    text-decoration: none;
     transition: background var(--duration-fast) var(--ease-out);
   }
-  .mm-cta:hover { background: var(--rp-accent-hover); }
+  .lka-cta-btn:hover { background: var(--lka-accent-hover); border-color: var(--lka-accent-hover); }
+  .lka-cta-btn:active { background: var(--lka-accent-press); border-color: var(--lka-accent-press); }
+
+  /* ── Dropdown panel ── */
+  .lka-dropdown {
+    position: absolute; z-index: 99; top: 78px; left: 0; right: 0;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--lka-hairline);
+    animation: lka-dropdown-in var(--duration-base) var(--ease-out);
+  }
+  .lka-dropdown-inner {
+    max-width: var(--container); margin: 0 auto;
+    padding: var(--space-6) var(--gutter);
+  }
+  .lka-dropdown-nav {
+    display: flex; flex-direction: column; gap: var(--space-3);
+    max-width: 480px;
+  }
+  .lka-drop-link {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: var(--space-4) var(--space-4);
+    border-radius: var(--radius-control);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--text-heading);
+    text-decoration: none;
+    transition: background var(--duration-fast) var(--ease-out);
+  }
+  .lka-drop-link:hover { background: rgba(245,247,250,0.06); }
+  .lka-drop-arrow { color: var(--lka-accent); }
+
+  @keyframes lka-dropdown-in {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
   @media (max-width: 768px) {
-    .mm-nav { display: none; }
+    .lka-menu-label { display: none; }
+    .lka-menu-btn { padding: 8px 12px; }
+    .lka-cta-btn { display: none; } /* Hide CTA on mobile, show in dropdown? or keep minimal */
   }
 </style>
