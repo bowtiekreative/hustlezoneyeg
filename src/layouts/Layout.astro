@@ -1,0 +1,179 @@
+---
+import '../styles/global.css';
+import MegaMenu from '../components/MegaMenu.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = 'Hustle Zone — run the whole hustle from one place', ogImage } = Astro.props;
+
+// MegaMenu items
+const navItems = [
+  { label: 'Features', href: '/#features' },
+  { label: 'How It Works', href: '/#how' },
+  { label: 'Plans', href: '/#pricing' },
+  { label: 'FAQ', href: '/#faq' },
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="application-name" content="Hustle Zone" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#07090D" />
+
+    <!-- SEO -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://hustlezoneyeg.com" />
+    <meta property="og:site_name" content="Hustle Zone" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Emailit -->
+    <script src="https://sdk.emailit.app/sdk.js" defer></script>
+  </head>
+  <body>
+    <MegaMenu
+      brand="Hustle Zone"
+      items={navItems}
+      cta="Book a Demo"
+      ctaHref="/demo"
+    />
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <span class="footer-logo">HZ</span>
+          <p class="footer-tagline">The operating system for people building something on the side or on their own.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Pages</h4>
+            <nav>
+              <a href="/">Home</a>
+              <a href="/#features">Features</a>
+              <a href="/#pricing">Plans</a>
+              <a href="/#faq">FAQ</a>
+            </nav>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <nav>
+              <a href="/privacy">Privacy Policy</a>
+              <a href="/terms">Terms & Conditions</a>
+              <a href="/sitemap">Sitemap</a>
+            </nav>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <nav>
+              <a href="mailto:hello@hustlezoneyeg.com">hello@hustlezoneyeg.com</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Hustle Zone YEG. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Intersection Observer for reveal animations
+      if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.rp-reveal, .rp-reveal-stagger').forEach(el => observer.observe(el));
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  /* ── Footer ── */
+  .site-footer {
+    border-top: 1px solid var(--hairline-soft);
+    padding: var(--space-8) 0 var(--space-6);
+    margin-top: var(--section-gap);
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-7);
+  }
+  .footer-logo {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: var(--radius-btn);
+    background: var(--rp-accent); color: var(--rp-on-accent);
+    font-weight: var(--weight-semibold); font-size: 16px;
+    margin-bottom: var(--space-4);
+  }
+  .footer-tagline {
+    color: var(--text-muted); font-size: var(--text-small);
+    max-width: 320px; line-height: 1.6;
+  }
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gutter);
+  }
+  .footer-col h4 {
+    font-size: var(--text-micro); letter-spacing: var(--track-micro);
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: var(--space-4);
+  }
+  .footer-col nav { display: flex; flex-direction: column; gap: var(--space-2); }
+  .footer-col a {
+    font-size: var(--text-small); color: var(--text-body);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+    width: fit-content;
+  }
+  .footer-col a:hover { color: var(--text-link); }
+  .footer-bottom {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--hairline-soft);
+  }
+  .footer-bottom p {
+    font-size: var(--text-small); color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner { grid-template-columns: 1fr; gap: var(--space-6); }
+    .footer-links { grid-template-columns: 1fr 1fr; }
+  }
+</style>

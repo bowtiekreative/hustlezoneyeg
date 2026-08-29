@@ -1,0 +1,53 @@
+---
+export interface Props {
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  disabled?: boolean;
+}
+const { variant = 'primary', size = 'md', href, disabled = false } = Astro.props;
+const Tag = href ? 'a' : 'button';
+const cls = `rp-btn rp-btn-${variant} rp-btn-${size}`;
+---
+
+<Tag href={href || undefined} disabled={!href && disabled ? true : undefined} class={cls}>
+  <slot />
+  {variant === 'ghost' && <span class="rp-btn-arrow">→</span>}
+</Tag>
+
+<style is:global>
+  .rp-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--font-core);
+    font-weight: var(--weight-semibold);
+    letter-spacing: -0.01em;
+    border-radius: var(--radius-btn);
+    border: 1px solid transparent;
+    cursor: pointer; text-decoration: none;
+    transition: background var(--duration-fast) var(--ease-out),
+                border-color var(--duration-fast) var(--ease-out),
+                color var(--duration-fast) var(--ease-out);
+  }
+  .rp-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .rp-btn-sm { padding: 8px 16px; font-size: 14px; }
+  .rp-btn-md { padding: 12px 24px; font-size: 16px; }
+  .rp-btn-lg { padding: 16px 32px; font-size: 16px; }
+  .rp-btn-primary {
+    background: var(--cta); color: var(--rp-on-accent);
+    border-color: transparent;
+  }
+  .rp-btn-primary:hover { background: var(--rp-accent-hover); }
+  .rp-btn-primary:active { background: var(--rp-accent-press); }
+  .rp-btn-secondary {
+    background: transparent; color: var(--text-heading);
+    border-color: var(--hairline);
+  }
+  .rp-btn-secondary:hover { border-color: rgba(245,247,250,0.4); }
+  .rp-btn-ghost {
+    background: transparent; color: var(--text-heading);
+    padding: 0; border: none;
+  }
+  .rp-btn-ghost:hover { color: var(--text-link); }
+  .rp-btn-ghost:active { color: var(--rp-accent-press); }
+  .rp-btn-arrow { color: var(--rp-accent); }
+</style>

@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Sitemap — Hustle Zone YEG" description="Sitemap for Hustle Zone YEG.">
+  <div class="sitemap-page">
+    <div class="container">
+      <div class="sitemap-header rp-reveal">
+        <span class="section-label">NAVIGATION</span>
+        <h1>Sitemap</h1>
+      </div>
+      <div class="sitemap-grid rp-reveal">
+        <div class="sitemap-col">
+          <h2>Main Pages</h2>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#how">How It Works</a></li>
+            <li><a href="/#pricing">Plans & Pricing</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+            <li><a href="/demo">Book a Demo</a></li>
+          </ul>
+        </div>
+        <div class="sitemap-col">
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/terms">Terms & Conditions</a></li>
+          </ul>
+        </div>
+        <div class="sitemap-col">
+          <h2>Resources</h2>
+          <ul>
+            <li><a href="/sitemap">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  .sitemap-page { padding: var(--space-8) 0 var(--space-10); }
+  .sitemap-header { margin-bottom: var(--space-7); }
+  .sitemap-header h1 {
+    font-size: var(--text-h1); font-weight: var(--weight-semibold);
+    letter-spacing: var(--track-h1); line-height: var(--leading-h1);
+    color: var(--text-heading); margin-top: var(--space-4);
+  }
+  .sitemap-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+  .sitemap-col h2 {
+    font-size: var(--text-h3); font-weight: var(--weight-semibold);
+    color: var(--text-heading); margin-bottom: var(--space-5);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .sitemap-col ul { list-style: none; }
+  .sitemap-col li { margin-bottom: var(--space-3); }
+  .sitemap-col a {
+    font-size: var(--size-body); color: var(--text-body);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .sitemap-col a:hover { color: var(--text-link); }
+
+  @media (max-width: 768px) {
+    .sitemap-grid { grid-template-columns: 1fr; }
+  }
+</style>

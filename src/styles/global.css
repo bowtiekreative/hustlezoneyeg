@@ -1,0 +1,136 @@
+/* Ryan Perez Design System — Hustle Zone YEG */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  /* ── Base palette ── */
+  --rp-canvas: #07090D;
+  --rp-surface: #1A1D24;
+  --rp-surface-2: #23262F;
+  --rp-heading: #F5F7FA;
+  --rp-body: #C5C7CE;
+  --rp-muted: #8A8D96;
+  --rp-accent: #3F6EE9;
+  --rp-accent-hover: #5B84EE;
+  --rp-accent-press: #3259C4;
+  --rp-on-accent: #F5F7FA;
+
+  /* ── Semantic aliases ── */
+  --bg-page: var(--rp-canvas);
+  --surface-card: var(--rp-surface);
+  --surface-raised: var(--rp-surface-2);
+  --text-heading: var(--rp-heading);
+  --text-body: var(--rp-body);
+  --text-muted: var(--rp-muted);
+  --text-link: var(--rp-accent-hover);
+
+  /* ── Depth ── */
+  --hairline: rgba(245,247,250,0.15);
+  --hairline-soft: rgba(245,247,250,0.08);
+  --backlight: radial-gradient(60% 50% at 50% 100%, rgba(255,255,255,0.07), transparent 70%);
+  --backlight-top: radial-gradient(60% 50% at 50% 0%, rgba(255,255,255,0.07), transparent 70%);
+  --glass-bg: rgba(7,9,13,0.8);
+  --glass-blur: blur(16px);
+
+  /* ── Typography ── */
+  --font-core: 'Inter', -apple-system, 'Segoe UI', sans-serif;
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --text-h1: 80px; --track-h1: -0.05em; --leading-h1: 1.02;
+  --text-h2: 56px; --track-h2: -0.04em; --leading-h2: 1.08;
+  --text-h3: 32px; --track-h3: -0.02em; --leading-h3: 1.2;
+  --text-h4: 22px; --track-h4: -0.01em; --leading-h4: 1.3;
+  --size-body: 16px; --leading-body: 1.7;
+  --text-body-lg: 18px;
+  --text-small: 14px;
+  --text-micro: 12px; --track-micro: 0.12em;
+
+  /* ── Spacing & Layout ── */
+  --container: 1200px;
+  --gutter: 32px;
+  --section-gap: 128px;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+  --space-9: 96px; --space-10: 128px;
+  --radius-btn: 8px;
+  --radius-input: 8px;
+  --radius-card: 16px;
+  --radius-panel: 24px;
+  --radius-media: 32px;
+  --radius-media-lg: 48px;
+  --radius-pill: 999px;
+
+  /* ── Motion ── */
+  --ease-out: cubic-bezier(0.16,1,0.3,1);
+  --duration-fast: 200ms;
+  --duration-base: 600ms;
+  --duration-slow: 900ms;
+  --stagger: 90ms;
+  --rise: 24px;
+  --media-bleed: 1.08;
+  --ratio-hero: 3/1;
+  --ratio-hero-tall: 2/1;
+
+  /* ── Texture ── */
+  --grade-filter: saturate(0.85) contrast(0.92);
+  --grade-tint: linear-gradient(rgba(23,32,52,0.25), rgba(23,32,52,0.25));
+  --grain-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  --grain-opacity: 0.06;
+  --flood-canvas: linear-gradient(90deg, rgba(7,9,13,0.92) 0%, rgba(7,9,13,0.75) 35%, rgba(7,9,13,0.1) 70%, transparent 100%);
+  --protect-bottom: linear-gradient(180deg, transparent 40%, rgba(7,9,13,0.35) 70%, rgba(7,9,13,0.85) 100%);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-core);
+  font-size: var(--size-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-body);
+  color: var(--text-body);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+
+/* ── Utility classes ── */
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+.section { padding: var(--section-gap) 0; }
+
+/* ── Fade-in reveals ── */
+@media (prefers-reduced-motion: no-preference) {
+  .rp-reveal { opacity: 0; transform: translateY(var(--rise)); transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out); }
+  .rp-reveal.in-view { opacity: 1; transform: translateY(0); }
+  .rp-reveal-stagger > * { opacity: 0; transform: translateY(var(--rise)); transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out); }
+  .rp-reveal-stagger.in-view > *:nth-child(1) { transition-delay: 0ms; }
+  .rp-reveal-stagger.in-view > *:nth-child(2) { transition-delay: 90ms; }
+  .rp-reveal-stagger.in-view > *:nth-child(3) { transition-delay: 180ms; }
+  .rp-reveal-stagger.in-view > *:nth-child(4) { transition-delay: 270ms; }
+  .rp-reveal-stagger.in-view > *:nth-child(5) { transition-delay: 360ms; }
+  .rp-reveal-stagger.in-view > *:nth-child(6) { transition-delay: 450ms; }
+  .rp-reveal-stagger.in-view > * { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms!important; transition-duration: 0.01ms!important; }
+  .rp-reveal { opacity: 1; transform: none; }
+  .rp-reveal-stagger > * { opacity: 1; transform: none; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  :root {
+    --text-h1: 40px; --track-h1: -0.03em;
+    --text-h2: 32px; --track-h2: -0.02em;
+    --text-h3: 24px;
+    --container: 100%;
+    --section-gap: 64px;
+    --gutter: 20px;
+  }
+}

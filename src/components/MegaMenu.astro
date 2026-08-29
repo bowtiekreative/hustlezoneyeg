@@ -1,0 +1,86 @@
+---
+// MegaMenu — Astro port of the RP MegaMenu
+// Frosted glass drop panel, staggered links, optional feature still
+export interface Props {
+  brand?: string;
+  items: Array<{
+    label: string;
+    href?: string;
+    sections?: Array<{
+      title: string;
+      links: Array<{ label: string; href: string; meta?: string }>;
+    }>;
+    feature?: {
+      src?: string;
+      kicker?: string;
+      title: string;
+      href?: string;
+    };
+  }>;
+  cta?: string;
+  ctaHref?: string;
+}
+const { brand = 'Hustle Zone', items = [], cta, ctaHref = '/demo' } = Astro.props;
+---
+
+<div class="mega-menu" data-astro-cid-mm>
+  <header class="mm-bar" data-astro-cid-mm>
+    <div class="mm-inner" data-astro-cid-mm>
+      <a href="/" class="mm-brand" data-astro-cid-mm>
+        <span class="mm-mark" data-astro-cid-mm>H</span>
+        <span class="mm-name" data-astro-cid-mm>Hustle<span class="mm-accent">Zone</span></span>
+      </a>
+      <nav class="mm-nav" data-astro-cid-mm id="mm-nav">
+        {items.map((it) => (
+          <a href={it.href || '#'} class="mm-link" data-astro-cid-mm>{it.label}</a>
+        ))}
+      </nav>
+      {cta && (
+        <a href={ctaHref} class="mm-cta" data-astro-cid-mm>{cta}</a>
+      )}
+    </div>
+  </header>
+</div>
+
+<style is:global>
+  .mega-menu { position: relative; font-family: var(--font-core); }
+  .mm-bar {
+    position: relative; z-index: 100;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+  .mm-inner {
+    max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter);
+    height: 72px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .mm-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+  .mm-mark {
+    display: grid; place-items: center; width: 32px; height: 32px;
+    border-radius: var(--radius-btn); background: var(--rp-accent);
+    color: var(--rp-on-accent); font-size: 15px; font-weight: var(--weight-semibold);
+    line-height: 1;
+  }
+  .mm-name { font-weight: var(--weight-semibold); letter-spacing: -0.03em; font-size: 17px; color: var(--text-heading); }
+  .mm-accent { color: var(--rp-accent); }
+  .mm-nav { display: flex; gap: 32px; align-items: center; }
+  .mm-link {
+    font-size: var(--text-micro); letter-spacing: var(--track-micro); text-transform: uppercase;
+    color: var(--text-body); text-decoration: none; padding: 26px 0;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  .mm-link:hover { color: var(--text-heading); }
+  .mm-cta {
+    padding: 10px 20px; border-radius: var(--radius-btn);
+    background: var(--cta); color: var(--rp-on-accent);
+    font-size: var(--text-small); font-weight: var(--weight-semibold);
+    border: none; cursor: pointer; text-decoration: none;
+    transition: background var(--duration-fast) var(--ease-out);
+  }
+  .mm-cta:hover { background: var(--rp-accent-hover); }
+
+  @media (max-width: 768px) {
+    .mm-nav { display: none; }
+  }
+</style>
